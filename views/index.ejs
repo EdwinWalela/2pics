@@ -58,7 +58,7 @@
       })
       $.ajax({
         method:'GET',
-        url:'http://localhost:3000/wincount',
+        url:'http://twopics.herokuapp.com/wincount',
         dataType:'json'
       }).done((count)=>{
         $('#win-count').append("<p id='counter'>correct answers: "+count+'</p>')
