@@ -1,6 +1,6 @@
 
-//var socket = io.connect('http://twopics.herokuapp.com');
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect('http://twopics.herokuapp.com');
+//var socket = io.connect('http://localhost:3000');
 
 var msg = document.getElementById('feedbck');
 var btn = document.getElementById('submit-ans');
