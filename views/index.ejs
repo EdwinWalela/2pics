@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#7ec0ee">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/assets/index.css" rel="stylesheet" type="text/css"/>
+    <title>2pics</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js'></script>
+  </head>
+  <body>
+    <div id='win-count'>
+
+    </div>
+    <div id='pic-grid'>
+      <img id='images' src='https://image.ibb.co/cuhFBd/sun.jpg'/>
+      <img id='images' src='https://image.ibb.co/nJrLcJ/flower.jpg'/>
+    </div>
+    <div id='answer-feed'>
+      <ul id='ans-feed' class='answer-feed'>
+          <span id='feed'></span>
+      </ul>
+    </div>
+    <div id='post-form'>
+      <div id='feedbck'></div>
+      <form id='form' method='post' action=''>
+        <input id='input-ans' placeholder="enter answer..." type="text"/>
+        <input id='user-id' value='<%=user.username%>'/>
+        <input id='userid' value='<%=user.id%>'/>
+        <input id='user-thumb' value='<%=user.thumbnail%>'/>
+        <input id='user-points' value='<%=user.points%>'/>
+        <input type='submit' id='submit-ans' value='send'></input>
+      </form>
+    </div>
+    <script src='/assets/scripts/post.js'></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script>
+      $('#form').on('submit',(e)=>{
+        e.preventDefault();
+        var userID = $('#userid').val();
+        var thumb =$('#user-thumb').val();
+        var points =$('#user-points').val();
+        var answer = $('#input-ans').val();
+        var username = $('#user-id').val();
+        if(answer){
+        $.post('/feed/post',{
+          id:userID,
+          body:answer,
+          name:username,
+          pic:thumb,
+          upoints:points
+        });
+      }
+      })
+      $.ajax({
+        method:'GET',
+        url:'http://localhost:3000/wincount',
+        dataType:'json'
+      }).done((count)=>{
+        $('#win-count').append("<p id='counter'>correct answers: "+count+'</p>')
+      })
+    </script>
+  </body>
+</html>
+
+<!--<li>
+    <p id='time-stamp'></p>
+    <img id='prof-thumb' src=""/>
+    <p id='user-ans'>${data.body}</p>
+    <p id='user-info'>|</p>
+  </li>-->

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#7ec0ee">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/assets/index.css" rel="stylesheet" type="text/css"/>
+    <title>My profile</title>
+  </head>
+  <body>
+    <div id='nav-bar'>
+      <h1> My Profile </h1>
+        <a href='/auth/logout'><button id='to-feed-btn'>Logout</button></a>
+        <a href='/feed'><button id='to-feed-btn'>Feed</button></a>
+    </div>
+    <img id='prof-thumbnail' src='<%=user.thumbnail%>'/>
+    <div id='prof-info'>
+      <p id='username'><%=user.username%>|<%=user.points%><p/>
+    </div>
+  </body>
+</html>
