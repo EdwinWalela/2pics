@@ -70,7 +70,7 @@ app.post('/feed/post',urlencodedParser,(req,res)=>{
   var answer = req.body.body;
   var idd = req.body.id;
   //console.log(answer,id)
-  if(answer == 'sunflower'){
+  if(answer == 'sunflower'|| answer == 'Sunflower'){
     Winner.findOne({Usrid:idd}).then((user)=>{
       if(!user){
         User.findByIdAndUpdate(idd,{ $inc: { points: 48 }},(err,data)=>{
