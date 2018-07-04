@@ -44,7 +44,11 @@ app.set('view engine','ejs')
 app.use('/assets',express.static('assets'));
 
 app.get('/',(req,res)=>{
+  if(!req.user){
   res.redirect('/auth/login')
+}else{
+  res.redirect('/feed');
+}
 })
 
 app.get('/wincount',(req,res)=>{
