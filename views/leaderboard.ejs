@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link href="/assets/index.css" rel="stylesheet" type="text/css"/>
-    <title>My profile | twopics</title>
+    <title>LeaderBoard | twopics</title>
   </head>
   <body>
     <div id='nav-bar'>
-      <h1> My Profile </h1>
+      <h1> LeaderBoard </h1>
       <i class="fas fa-bars"></i>
       <div id='menu' class='active'>
         <a href='/profile'><p id='to-feed-btn'>Profile</p></a>
@@ -19,19 +19,24 @@
         <a href='/auth/logout'><p id='to-feed-btn'>Logout</p></a>
       </div>
     </div>
-    <img id='prof-thumbnail' src='<%=user.thumbnail%>'/>
-    <div id='prof-info'>
-      <p id='username'><%=user.username%>|<%=user.points%><p/>
+    <div id='leaderboard'>
+      <ul class='answer-feed'>
+        <%data.forEach((data)=>{%>
+          <li>
+            <p id='point-badge'><%=data.points%></p>
+            <img id='prof-thumb' src='<%=data.thumbnail%>'/>
+            <p id='user-info'><%=data.username%></p>
+          </li>
+          <%})%>
+      </ul>
     </div>
     <script
     src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
     crossorigin="anonymous"></script>
-    <script>
-      $('.fa-bars').on('click',function(){
+    <script>$('.fa-bars').on('click',function(){
         $('#menu').toggleClass('active');
       })
-    </script>
+</script>
   </body>
-
 </html>

@@ -58,6 +58,16 @@ app.get('/feed',authCheck,(req,res)=>{
   res.render('index',{user:req.user});
 })
 
+app.get('/leaderboard',authCheck,(req,res)=>{
+  User.find({}).sort({points:-1}).then((data)=>{
+    let payload = data;
+    res.render('leaderboard',{data:payload});
+  }).catch((err)=>{
+    res.json('error',err);
+  })
+
+})
+
 app.post('/feed/post',urlencodedParser,(req,res)=>{
  new Posts ({
     body:req.body.body,
@@ -70,10 +80,10 @@ app.post('/feed/post',urlencodedParser,(req,res)=>{
   var answer = req.body.body;
   var idd = req.body.id;
   //console.log(answer,id)
-  if(answer == 'sunflower'){
+  if(answer == 'airport'){
     Winner.findOne({Usrid:idd}).then((user)=>{
       if(!user){
-        User.findByIdAndUpdate(idd,{ $inc: { points: 48 }},(err,data)=>{
+        User.findByIdAndUpdate(idd,{ $inc: { points: 33 }},(err,data)=>{
           if(err){
             console.log('error',err);
           }
@@ -98,7 +108,7 @@ var io = socket(server);
 io.on('connection',(socket)=>{
   console.log(`new socket conection id:${socket.id}`);
 
-  Posts.find({}).then((docs)=>{
+  Posts.find({}).sort({time:-1}).then((docs)=>{
     socket.emit('feedHistory',docs)
   })
 

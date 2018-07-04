@@ -6,6 +6,11 @@
   font-family: sans-serif;
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
 #pic-grid{
   width: 100%;
   max-width: 700px;
@@ -97,25 +102,57 @@
 }
 
 #nav-bar{
-  height: 80px;
+  height: 60px;
   background-color: skyblue;
 }
 
 #to-feed-btn{
-  color:#fff;
+  text-align: center;
+  background-color: #fff;
   border: none;
-  margin:1em;
-  padding: 1em;
-  float: right;
+  margin:1.5em 1em;
+  padding: 10px;
+}
+
+#point-badge{
+  text-align: center;
   background-color: tomato;
+  color:#fff;
+  font-weight: bold;
+  margin: 6px;
+  float: right;
+  position: relative;
+  font-size: 1.35em;
+  padding: 13px;
+  width: 22%;
+}
+
+.fa-bars{
+    font-size: 2em;
+    float:right;
+    margin: 0.4em;
+    color:#fff;
 }
 
 h1{
   color:#fff;
-  padding: 25px;
+  padding: 20px;
   display: inline-block;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1em;
+}
+#menu{
+  z-index: 10;
+  background-color: skyblue;
+  width: 60%;
+  height: 300px;
+  margin-left: 40%;
+  position: absolute;
+  transition: all .2s ease-out;
+}
+
+.active{
+  display: none;
 }
 
 #prof-thumbnail{

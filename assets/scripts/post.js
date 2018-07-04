@@ -16,7 +16,8 @@ btn.addEventListener('click',()=>{
   if(!input.value){
     alert('answer field is empty')
   }else{
-    socket.emit('post',{body:input.value,username:usrID.value,userThumb:userThumb.value,points:userPoints.value,time:new Date()});
+    let input = input.value.toLowerCase();
+    socket.emit('post',{body:input,username:usrID.value,userThumb:userThumb.value,points:userPoints.value,time:new Date()});
   }
 })
 

@@ -5,17 +5,26 @@
     <meta charset="utf-8">
     <meta name="theme-color" content="#7ec0ee">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link href="/assets/index.css" rel="stylesheet" type="text/css"/>
-    <title>2pics</title>
+    <title>Feed | 2pics</title>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js'></script>
   </head>
   <body>
-    <div id='win-count'>
-
+    <div id='win-count'></div>
+    <div id='nav-bar'>
+      <h1> Feed </h1>
+      <i class="fas fa-bars"></i>
+      <div id='menu' class='active'>
+        <a href='/profile'><p id='to-feed-btn'>Profile</p></a>
+        <a href='/feed'><p id='to-feed-btn'>Feed</p></a>
+        <a href='/leaderboard'><p id='to-feed-btn'>Leaderboard</p></a>
+        <a href='/auth/logout'><p id='to-feed-btn'>Logout</p></a>
+      </div>
     </div>
     <div id='pic-grid'>
-      <img id='images' src='https://image.ibb.co/cuhFBd/sun.jpg'/>
-      <img id='images' src='https://image.ibb.co/nJrLcJ/flower.jpg'/>
+      <img id='images' src="https://preview.ibb.co/j6KCZy/air_airport_area_542341.jpg"/>
+      <img id='images' src="https://preview.ibb.co/mdDZgd/aircraft_airplane_airport_1172541.jpg" />
     </div>
     <div id='answer-feed'>
       <ul id='ans-feed' class='answer-feed'>
@@ -39,6 +48,9 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
     <script>
+      $('.fa-bars').on('click',function(){
+        $('#menu').toggleClass('active');
+      })
       $('#form').on('submit',(e)=>{
         e.preventDefault();
         var userID = $('#userid').val();
