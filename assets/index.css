@@ -41,6 +41,7 @@ a{
   height: 4em;
   margin: 2% 0;
   padding: 10px;
+  text-transform: lowercase;
 }
 
 #submit-ans{
@@ -53,6 +54,7 @@ a{
 }
 
 .answer-feed li{
+  text-transform: lowercase;
   list-style: none;
   border-bottom: solid 0.5px  #3B5998;
   height: 5em;

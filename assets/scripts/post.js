@@ -18,6 +18,7 @@ btn.addEventListener('click',()=>{
   }else{
     let input = input.value.toLowerCase();
     socket.emit('post',{body:input,username:usrID.value,userThumb:userThumb.value,points:userPoints.value,time:new Date()});
+    input.value = ``;
   }
 })
 
